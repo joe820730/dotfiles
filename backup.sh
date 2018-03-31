@@ -1,5 +1,5 @@
 #!/bin/sh
-cp ~/.vimrc .
-cp ~/.bashrc .
-cp ~/.zshrc .
-cp ~/.tmux.conf .
+cp ~/.vimrc vimrc
+cp ~/.bashrc bashrc
+cp ~/.zshrc zshrc
+cp ~/.tmux.conf tmux.conf
