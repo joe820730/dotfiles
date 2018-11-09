@@ -1,4 +1,4 @@
-#~/bin/sh
+#!/bin/sh
 sudo apt install git vim tmux
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 mkdir ~/.vim
