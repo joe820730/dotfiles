@@ -9,3 +9,4 @@ set shiftwidth=2
 set number
 set ruler
 colorscheme malokai
+autocmd FileType make setlocal noexpandtab
