@@ -39,6 +39,7 @@ fi
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color) color_prompt=yes;;
+    xterm-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -67,7 +68,7 @@ unset color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n$(__git_ps1 "[%s]") \$ '
+  PS1='[\D{%T}] ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n$(__git_ps1 "[%s]") \$ '
     ;;
 *)
     ;;
@@ -113,14 +114,14 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
-export PATH=/usr/local/cuda-6.5/bin:$PATH
-
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
 # added by Anaconda3 4.2.0 installer
 #export PATH="/home/joe/anaconda3/bin:$PATH"
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+export PATH=$PATH:$HOME/local_bin/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local_bin/lib:/usr/local/lib
 export EXPERIMENTAL_USE_JAVA8=true
+export HEXAGON_ROOT=/pkg/qct/software/hexagon/releases/tools
+export LLVM_ROOT=/pkg/qct/software/llvm/release/arm
