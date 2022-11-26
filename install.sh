@@ -22,8 +22,9 @@ has_sudo
 
 if [[ $? -eq 0 ]];
 then
-    echo "Install packages 'git vim tmux'"
-    sudo apt install git vim tmux;
+    echo "Install packages 'git vim tmux build-essential'"
+    sudo apt install git vim tmux build-essential;
+    sudo hwclock --systohc --localtime;
 fi
 
 git clone https://github.com/ohmyzsh/oh-my-zsh.git ~/.oh-my-zsh
