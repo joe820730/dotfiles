@@ -37,6 +37,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp ./malokai.vim ~/.vim/colors/malokai.vim
 wget https://github.com/git/git/raw/master/contrib/completion/git-prompt.sh
 mv git-prompt.sh ~/.git-prompt.sh
+git config --global core.editor vim
 
 if [[ -f $HOME/.bashrc ]]
 then
