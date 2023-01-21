@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 is_root () {
     return $(id -u)
 }
@@ -27,7 +27,7 @@ then
     sudo hwclock --systohc --localtime;
 fi
 
-git clone https://github.com/ohmyzsh/oh-my-zsh.git ~/.oh-my-zsh
+# Vim config
 mkdir ~/.vim
 mkdir ~/.vim/colors
 mkdir ~/.vim/bundle
@@ -36,15 +36,26 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #ln -s ~/.vim/malokai.vim/colors/malokai.vim ~/.vim/colors/malokai.vim
 cp ./malokai.vim ~/.vim/colors/malokai.vim
 wget https://github.com/git/git/raw/master/contrib/completion/git-prompt.sh
+
 mv git-prompt.sh ~/.git-prompt.sh
 git config --global core.editor vim
 
+if [[ -f $HOME/.vimrc ]]
+then
+    cp $HOME/.vimrc $HOME/.vimrc.bak
+fi
+cp ./vimrc $HOME/.vimrc
+
+# Bash config
 if [[ -f $HOME/.bashrc ]]
 then
     cp $HOME/.bashrc $HOME/.bashrc.bak
-    cp ./bashrc $HOME/.bashrc
 fi
+cp ./bashrc $HOME/.bashrc
+mv git-prompt.sh ~/.git-prompt.sh
 
+# Zsh config
+git clone https://github.com/ohmyzsh/oh-my-zsh.git ~/.oh-my-zsh
 # if [[ -f $HOME/.zshrc ]]
 # then
 #     cp $HOME/.zshrc $HOME/.zshrc.bak
@@ -53,14 +64,9 @@ fi
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 ./zshsetup.sh
 
-if [[ -f $HOME/.vimrc ]]
-then
-    cp $HOME/.vimrc $HOME/.vimrc.bak
-    cp ./vimrc $HOME/.vimrc
-fi
-
+# Tmux config
 if [[ -f $HOME/.tmux.conf ]]
 then
     cp $HOME/.tmux.conf $HOME/.tmux.conf.bak
-    cp ./tmux.conf $HOME/.tmux.conf
 fi
+cp ./tmux.conf $HOME/.tmux.conf
