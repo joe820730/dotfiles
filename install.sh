@@ -23,11 +23,13 @@ has_sudo
 if [[ $? -eq 0 ]];
 then
     echo "Install packages 'git vim tmux build-essential wget curl'"
-    sudo apt install git vim tmux build-essential wget curl;
+    sudo apt install -y git vim tmux build-essential wget curl;
     echo "Install packages 'zsh cmake cmake-curses-gui'"
-    sudo apt install zsh cmake cmake-curses-gui;
+    sudo apt install -y zsh cmake cmake-curses-gui;
     echo "Make Linux use Local time to fix different time when dual boot."
     sudo hwclock --systohc --localtime;
+    echo "Install other cool packages"
+    sudo apt install -y btop
 fi
 
 # Vim config
@@ -40,7 +42,6 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp ./malokai.vim ~/.vim/colors/malokai.vim
 curl https://github.com/git/git/raw/master/contrib/completion/git-prompt.sh > $HOME/.git-prompt.sh
 
-mv git-prompt.sh ~/.git-prompt.sh
 git config --global core.editor vim
 
 if [[ -f $HOME/.vimrc ]]
@@ -55,7 +56,6 @@ then
     cp $HOME/.bashrc $HOME/.bashrc.bak
 fi
 cp ./bashrc $HOME/.bashrc
-mv git-prompt.sh ~/.git-prompt.sh
 
 # Zsh config
 git clone https://github.com/ohmyzsh/oh-my-zsh.git ~/.oh-my-zsh
