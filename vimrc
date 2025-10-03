@@ -3,7 +3,7 @@ set cindent
 set smartindent
 set linebreak
 syntax on
-set expandtab
+" set expandtab
 set tabstop=8
 set shiftwidth=8
 set number
